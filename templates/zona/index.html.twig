@@ -89,6 +89,7 @@
     <tr>
         <th>ID</th>
         <th>Nombre del Zona</th>
+        <th>Acciones</th>
     </tr>
     </thead>
     <tbody>
@@ -99,6 +100,21 @@
     <tr>
         <td>{{zona.id}}</td>
         <td>{{zona.descripcion}}</td>
+
+          <td>
+        
+          <a href="{{ path('zonaEdit', {id: zona.id}) }}" class="btn btn-secondary">
+              Editar
+          </a>
+
+           <a href="{{ path('zonaRemove', {id: zona.id}) }}" class="btn btn-danger">
+              Eliminar
+          </a>
+
+        </td>
+
+
+
     </tr>
 
 {% endfor %}

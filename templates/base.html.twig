@@ -11,6 +11,13 @@
         <link rel="stylesheet" href="{{ asset('css/main.css') }}">
         <script async
                 src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1344652070596566"></script>
+
+	<script src="jquery/jquery.min.js"></script>
+	<link rel="stylesheet" href="datatables-bs4/css/dataTables.bootstrap4.min.css">
+	<link rel="stylesheet" href="datatables-responsive/css/responsive.bootstrap4.min.css">
+	<link rel="stylesheet" href="datatables-buttons/css/buttons.bootstrap4.min.css">
+
+
     {% endblock %}
 </head>
 <body>
@@ -35,10 +42,31 @@
                     {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
 
 
-                     <li>
-                            <a class="nav-link" href="{{path('app_producto')}}">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fa-solid fa-cubes"></i> PRODUCTOS
                             </a>
+
+
+
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                                <a class="dropdown-item" href="{{path('app_producto')}}">
+                                    <i class="fa-solid fa-right-from-bracket"></i> Mantenimiento de productos
+                                </a>
+
+                                <a class="dropdown-item" href="{{path('app_reportegeneral')}}">
+                                    <i class="fa-solid fa-right-from-bracket"></i> Reporte General de producto
+                                </a>
+
+                                <a class="dropdown-item" href="{{path('app_reportegeneralproveedor')}}">
+                                    <i class="fa-solid fa-right-from-bracket"></i> Reporte de productos por proveedor
+                                </a>
+                                
+                            </div>
+
+
                         </li>
 
                         <li>
@@ -115,6 +143,25 @@
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     <script src="https://kit.fontawesome.com/f6edb77282.js" crossorigin="anonymous"></script>
+
+
+    <script src="datatables/jquery.dataTables.min.js"></script>
+<script src="datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+
+
+<script src="datatables-buttons/js/dataTables.buttons.min.js"></script>
+<script src="datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+<script src="jszip/jszip.min.js"></script>
+<script src="pdfmake/pdfmake.min.js"></script>
+<script src="pdfmake/vfs_fonts.js"></script>
+<script src="datatables-buttons/js/buttons.html5.min.js"></script>
+<script src="datatables-buttons/js/buttons.print.min.js"></script>
+<script src="datatables-buttons/js/buttons.colVis.min.js"></script>
+
+
+
 {% endblock %}
 </body>
 </html>

@@ -1,0 +1,80 @@
+{% extends 'base.html.twig' %}
+
+
+
+{% block body %}
+
+{{parent()}}
+
+
+
+
+
+
+ {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+
+
+<div class="row">
+          <div class="col-md-2">
+           
+          </div>
+          <!-- ./col -->
+          <div class="col-md-8">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">
+                  <i class="fas fa-text-width"></i>
+                  Editar Presentacion
+                </h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                
+
+
+            <div class="row p-2">
+                <div class="col-md-12 my-2">
+
+
+                {{ form_start(form) }}
+                 <div class="row p-2">
+                <div class="col-md-12 my-2">
+                    {{ form_widget(form.descripcion, {attr:{'placeholder':'Nombre', 'class':'form-control'}}) }}
+                </div>                    
+                </div>
+                {{ form_end(form) }}
+
+                </div>
+                
+                
+
+            </div>
+            
+
+                
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- ./col -->
+          <div class="col-md-2">
+           
+           
+          </div>
+          <!-- ./col -->
+        </div>
+
+
+
+
+
+
+ {% endif %}
+
+
+
+
+
+
+{% endblock %}

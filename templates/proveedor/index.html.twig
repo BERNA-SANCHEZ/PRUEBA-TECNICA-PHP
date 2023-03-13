@@ -89,6 +89,8 @@
     <tr>
         <th>ID</th>
         <th>Nombre del Proveedor</th>
+        <th>Acciones</th>
+
     </tr>
     </thead>
     <tbody>
@@ -99,6 +101,20 @@
     <tr>
         <td>{{proveedor.id}}</td>
         <td>{{proveedor.descripcion}}</td>
+
+          <td>
+        
+          <a href="{{ path('proveedorEdit', {id: proveedor.id}) }}" class="btn btn-secondary">
+              Editar
+          </a>
+
+           <a href="{{ path('proveedorRemove', {id: proveedor.id}) }}" class="btn btn-danger">
+              Eliminar
+          </a>
+
+        </td>
+
+
     </tr>
 
 {% endfor %}

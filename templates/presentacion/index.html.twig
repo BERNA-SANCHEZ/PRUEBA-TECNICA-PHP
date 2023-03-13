@@ -89,6 +89,8 @@
     <tr>
         <th>ID</th>
         <th>Nombre de la Presentacion</th>
+        <th>Acciones</th>
+
     </tr>
     </thead>
     <tbody>
@@ -99,6 +101,20 @@
     <tr>
         <td>{{presentacion.id}}</td>
         <td>{{presentacion.descripcion}}</td>
+          <td>
+        
+          <a href="{{ path('presentacionEdit', {id: presentacion.id}) }}" class="btn btn-secondary">
+              Editar
+          </a>
+
+           <a href="{{ path('presentacionRemove', {id: presentacion.id}) }}" class="btn btn-danger">
+              Eliminar
+          </a>
+
+        </td>
+
+
+
     </tr>
 
 {% endfor %}

@@ -1,0 +1,145 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+
+
+{{parent()}}
+ {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+<br>
+
+                            
+<div class="row">
+    
+          <!-- ./col -->
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">
+                  <i class="fas fa-text-width"></i>
+                  Tabla de productos
+                </h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+
+
+
+<table class="table table-hover text-nowrap" id="tabla_pagina">
+    <thead>
+    <tr>
+        <th>Codigo</th>
+        <th>Nombre del producto</th>
+        <th>Precio</th>
+        <th>Stock</th>
+        <th>Iva</th>
+        <th>Peso</th>
+        <th>Zona</th>
+        <th>Marca</th>
+        <th>Proveedor</th>
+        <th>Presentacion</th>
+
+    </tr>
+    </thead>
+    <tbody>
+
+{% for producto in productos%}
+
+    <tr>
+        <td>{{producto.codigo}}</td>
+        <td>{{producto.descripcion_producto}}</td>
+        <td>{{producto.precio}}</td>
+        <td>{{producto.stock}}</td>
+        <td>{{producto.iva}}</td>
+        <td>{{producto.peso}}</td>
+        <td>{{producto.zonaname}}</td>
+        <td>{{producto.marcaname}}</td>
+        <td>{{producto.proveedorname}}</td>
+        <td>{{producto.presentacionname}}</td>
+
+
+
+
+    </tr>
+
+{% endfor %}
+
+    </tbody>
+</table>
+
+
+
+           </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- ./col -->
+     
+        </div>
+
+ {% endif %}
+
+
+
+ <script>
+$(document).ready(function() {
+    $('#tabla_pagina').DataTable({ 
+
+                initComplete: function() {
+                    $(this.api().table().container()).find('input').parent().wrap('<form>').parent().attr('autocomplete', 'off');
+                },
+
+            
+
+
+                dom: 'Blfrtip',
+                buttons: [
+
+                        {
+                               extend: 'copy', 
+                          orientation: 'Portrait',// Portrait o landscape
+                             pageSize: 'LEGAL', //tamaño hoja
+                                title: 'Prueba tecnica de PHP: Reporte generado por datatable' //nombre para descargar
+                            
+                        },
+
+                        {
+                               extend: 'csv', 
+                          orientation: 'Portrait',// Portrait o landscape
+                             pageSize: 'LEGAL', //tamaño hoja
+                                title: 'Prueba tecnica de PHP: Reporte generado por datatable' //nombre para descargar
+                           
+
+                        },
+                       
+                        {
+                               extend: 'excel', 
+                          orientation: 'Portrait',// Portrait o landscape
+                             pageSize: 'LEGAL', //tamaño hoja
+                                title: 'Prueba tecnica de PHP: Reporte generado por datatable' //nombre para descargar
+                           
+
+                        },
+                        
+                        {
+                               extend: 'pdf', 
+                          orientation: 'landscape',// Portrait o landscape
+                             pageSize: 'LEGAL', //tamaño hoja
+                                title: 'Prueba tecnica de PHP: Reporte generado por datatable' //nombre para descargar
+                            
+                        }  ,
+                        'print'
+                    ],
+                "sPaginationType": "full_numbers",
+                
+            });
+});
+</script>
+
+
+
+
+
+
+{% endblock %}

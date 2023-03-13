@@ -1,10 +1,13 @@
 {% extends 'base.html.twig' %}
 
 
+
 {% block body %}
 
-
 {{parent()}}
+
+
+
 
 
 
@@ -21,7 +24,7 @@
               <div class="card-header">
                 <h3 class="card-title">
                   <i class="fas fa-text-width"></i>
-                  Formuario de productos
+                  Editar Producto
                 </h3>
               </div>
               <!-- /.card-header -->
@@ -29,7 +32,12 @@
                 
 
 
+            <div class="row p-2">
+                <div class="col-md-12 my-2">
 
+
+                
+                
         {{ form_start(form) }}
             <div class="row p-2">
                 <div class="col-md-6 my-2">
@@ -81,13 +89,14 @@
 
             </div>
         {{ form_end(form) }}
+        
 
+                </div>
+                
+                
 
-
-
-
-
-
+            </div>
+            
 
                 
               </div>
@@ -106,97 +115,12 @@
 
 
 
-<br>
-<br>
-<br>
 
-                            
-<div class="row">
-    
-          <!-- ./col -->
-          <div class="col-md-12">
-            <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">
-                  <i class="fas fa-text-width"></i>
-                  Tabla de productos
-                </h3>
-              </div>
-              <!-- /.card-header -->
-              <div class="card-body">
-
-
-
-<table class="table table-hover text-nowrap">
-    <thead>
-    <tr>
-        <th>Codigo</th>
-        <th>Nombre del producto</th>
-        <th>Precio</th>
-        <th>Stock</th>
-        <th>Iva</th>
-        <th>Peso</th>
-        <th>Zona</th>
-        <th>Marca</th>
-        <th>Proveedor</th>
-        <th>Presentacion</th>
-        <th>Acciones</th>
-
-    </tr>
-    </thead>
-    <tbody>
-
-{% for producto in productos%}
-
-    <tr>
-        <td>{{producto.codigo}}</td>
-        <td>{{producto.descripcion_producto}}</td>
-        <td>{{producto.precio}}</td>
-        <td>{{producto.stock}}</td>
-        <td>{{producto.iva}}</td>
-        <td>{{producto.peso}}</td>
-        <td>{{producto.zonaname}}</td>
-        <td>{{producto.marcaname}}</td>
-        <td>{{producto.proveedorname}}</td>
-        <td>{{producto.presentacionname}}</td>
-
-        <td>
-        
-          <a href="{{ path('productoEdit', {id: producto.id}) }}" class="btn btn-secondary">
-              Editar
-          </a>
-
-
-          <a href="{{ path('productoRemove', {id: producto.id}) }}" class="btn btn-danger">
-              Eliminar
-          </a>
-
-
-
-
-        </td>
-
-
-
-    </tr>
-
-{% endfor %}
-
-    </tbody>
-</table>
-
-
-
-           </div>
-              <!-- /.card-body -->
-            </div>
-            <!-- /.card -->
-          </div>
-          <!-- ./col -->
-     
-        </div>
 
  {% endif %}
+
+
+
 
 
 

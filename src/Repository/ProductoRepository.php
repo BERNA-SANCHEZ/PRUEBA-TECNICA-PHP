@@ -42,7 +42,7 @@ class ProductoRepository extends ServiceEntityRepository
     public function findAllProductos(){
         return $this->getEntityManager()
             ->createQuery(
-                'SELECT producto.codigo,producto.descripcion_producto,producto.precio,
+                'SELECT producto.id,producto.codigo,producto.descripcion_producto,producto.precio,
                 producto.stock,producto.iva,producto.peso, 
                 zona.descripcion as zonaname     ,   
                 marca.descripcion as marcaname     ,   
@@ -57,6 +57,28 @@ class ProductoRepository extends ServiceEntityRepository
             )
             ->getResult();
     }
+
+
+    public function findAllProductosProveedor(){
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT producto.id,producto.codigo,producto.descripcion_producto,producto.precio,
+                producto.stock,producto.iva,producto.peso, 
+                zona.descripcion as zonaname     ,   
+                marca.descripcion as marcaname     ,   
+                proveedor.descripcion as proveedorname    ,    
+                presentacion.descripcion as presentacionname        
+                FROM App:Producto producto 
+                JOIN producto.zona zona
+                JOIN producto.marca marca
+                JOIN producto.presentacion presentacion
+                JOIN producto.proveedor proveedor
+                ORDER BY producto.proveedor DESC '
+            )
+            ->getResult();
+    }
+
+
 
 //    /**
 //     * @return Producto[] Returns an array of Producto objects

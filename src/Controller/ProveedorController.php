@@ -52,6 +52,53 @@ class ProveedorController extends AbstractController
 
 
 
+    
+    #[Route('/proveedores/edit/{id}', name: 'proveedorEdit')]
+    public function zonaEdit(Request $request, Proveedor $proveedores, Proveedor $id)
+    {
+        $form = $this->createForm(ProveedorType::class, $proveedores);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            
+            $proveedores = $this->em->getRepository(Proveedor::class)->find($id); //Busca por id
+            $this->em->flush();
+            return $this->redirectToRoute('app_proveedor');
+
+        }
+
+        return $this->render('proveedor/edit.html.twig', [
+            'form' => $form->createView(),
+            'proveedores' => $proveedores,
+        ]);
+    }
+
+
+    #[Route('/proveedores/remove/{id}', name: 'proveedorRemove')]
+    public function marcaRemove(Request $request, Proveedor $proveedores, Proveedor $id)
+    {
+        $form = $this->createForm(ProveedorType::class, $proveedores);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            
+            $proveedores = $this->em->getRepository(Proveedor::class)->find($id); //Busca por id
+            $this->em->remove($proveedores); //usando los set
+            $this->em->flush();
+            return $this->redirectToRoute('app_proveedor');
+            
+        }
+
+        return $this->render('proveedor/remove.html.twig', [
+            'form' => $form->createView(),
+            'proveedores' => $proveedores,
+        ]);
+    }
+
+
+
     /*#[Route('/proveedor/{id}', name: 'app_proveedor')]
     public function index(Proveedor $id): Response
     {

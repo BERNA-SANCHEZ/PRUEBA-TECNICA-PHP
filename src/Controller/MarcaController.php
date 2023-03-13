@@ -26,8 +26,6 @@ class MarcaController extends AbstractController
     {
 
         $marca = new Marca();
-
-
         $form = $this->createForm(MarcaType::class, $marca);
         $form->handleRequest($request);
 
@@ -36,16 +34,74 @@ class MarcaController extends AbstractController
             $this->em->flush();
             return $this->redirectToRoute('app_marca');
         }
-
-
         $marcas = $this->em->getRepository(Marca::class)->findAll(); //Busca todos
-
-
-
-
         return $this->render('marca/index.html.twig', [
             'form'=>$form->createView(),
             'marcas'=>$marcas
         ]);
+
+
     }
+
+
+
+    /*#[Route('/marca/edit/{id}', name: 'marcaEdit')]
+    public function marcaEdit(Marca $marca) {
+        return $this->render('marca/edit.html.twig', ['marca' => $marca]);
+    }*/
+
+
+
+    #[Route('/marca/edit/{id}', name: 'marcaEdit')]
+    public function marcaEdit(Request $request, Marca $marca, Marca $id)
+    {
+        $form = $this->createForm(MarcaType::class, $marca);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            
+            $marca = $this->em->getRepository(Marca::class)->find($id); //Busca por id
+            $this->em->flush();
+            return $this->redirectToRoute('app_marca');
+
+        }
+
+        return $this->render('marca/edit.html.twig', [
+            'form' => $form->createView(),
+            'marca' => $marca,
+        ]);
+    }
+
+
+    #[Route('/marca/remove/{id}', name: 'marcaRemove')]
+    public function marcaRemove(Request $request, Marca $marca, Marca $id)
+    {
+        $form = $this->createForm(MarcaType::class, $marca);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            
+            $marca = $this->em->getRepository(Marca::class)->find($id); //Busca por id
+            $this->em->remove($marca); //usando los set
+            $this->em->flush();
+            return $this->redirectToRoute('app_marca');
+            
+        }
+
+        return $this->render('marca/remove.html.twig', [
+            'form' => $form->createView(),
+            'marca' => $marca,
+        ]);
+    }
+
+
+
+
+
+
+
+
+
 }
