@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello UserController!{% endblock %}
+
+{% block body %}
+
+{{parent()}}
+
+
+
+
+<div class="row">
+          <div class="col-md-2">
+           
+          </div>
+          <!-- ./col -->
+          <div class="col-md-8">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">
+                  <i class="fas fa-text-width"></i>
+                  Registro de usuarios
+                </h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                
+
+
+
+        {{ form_start(registration_form) }}
+            <div class="row p-2">
+                <div class="col-md-6 my-2">
+                    {{ form_widget(registration_form.email, {attr:{'placeholder':'e-mail', 'class':'form-control'}}) }}
+                </div>
+                <div class="col-md-6 my-2">
+                    {{ form_widget(registration_form.password, {attr:{'placeholder':'password','class':'form-control'}}) }}
+                </div>
+              
+
+                
+
+            </div>
+        {{ form_end(registration_form) }}
+
+
+
+
+
+
+
+
+                
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- ./col -->
+          <div class="col-md-2">
+           
+           
+          </div>
+          <!-- ./col -->
+        </div>
+
+
+
+
+{% endblock %}

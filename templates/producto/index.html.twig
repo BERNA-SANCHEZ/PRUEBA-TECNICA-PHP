@@ -1,0 +1,188 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+
+
+{{parent()}}
+
+
+
+ {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+
+
+<div class="row">
+          <div class="col-md-2">
+           
+          </div>
+          <!-- ./col -->
+          <div class="col-md-8">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">
+                  <i class="fas fa-text-width"></i>
+                  Formuario de productos
+                </h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                
+
+
+
+        {{ form_start(form) }}
+            <div class="row p-2">
+                <div class="col-md-6 my-2">
+                    {{ form_widget(form.codigo, {attr:{'placeholder':'Codigo', 'class':'form-control'}}) }}
+                </div>
+                <div class="col-md-6 my-2">
+                    {{ form_widget(form.descripcion_producto, {attr:{'placeholder':'Nombre del Producto','class':'form-control'}}) }}
+                </div>
+                <div class="col-md-6 my-2">
+                    {{ form_widget(form.precio, {attr:{'class':'form-control', 'placeholder': 'Precio'}}) }}
+                </div>
+            
+
+            <div class="col-md-6 my-2">
+                    {{ form_widget(form.stock, {attr:{'class':'form-control', 'placeholder': 'stock'}}) }}
+                </div>
+            
+
+            <div class="col-md-6 my-2">
+                    {{ form_widget(form.iva, {attr:{'class':'form-control', 'placeholder': 'iva'}}) }}
+                </div>
+
+                <div class="col-md-6 my-2">
+                    {{ form_widget(form.peso, {attr:{'class':'form-control', 'placeholder': 'peso'}}) }}
+                </div>
+
+
+                <div class="col-md-6 my-2">
+                    <label>Zona</label>
+                    {{ form_widget(form.zona, {attr:{'class':'form-control', 'placeholder': 'zona'}}) }}
+                </div>
+
+                <div class="col-md-6 my-2">
+                    <label>marca</label>
+                    {{ form_widget(form.marca, {attr:{'class':'form-control', 'placeholder': 'marca'}}) }}
+                </div>
+
+                <div class="col-md-6 my-2">
+                    <label>proveedor</label>
+                    {{ form_widget(form.proveedor, {attr:{'class':'form-control', 'placeholder': 'proveedor'}}) }}
+                </div>
+
+                <div class="col-md-6 my-2">
+                    <label>presentacion</label>
+                    {{ form_widget(form.presentacion, {attr:{'class':'form-control', 'placeholder': 'presentacion'}}) }}
+                </div>
+
+                
+
+            </div>
+        {{ form_end(form) }}
+
+
+
+
+
+
+
+
+                
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- ./col -->
+          <div class="col-md-2">
+           
+           
+          </div>
+          <!-- ./col -->
+        </div>
+
+
+
+
+<br>
+<br>
+<br>
+
+                            
+<div class="row">
+          <div class="col-md-1">
+           
+          </div>
+          <!-- ./col -->
+          <div class="col-md-10">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">
+                  <i class="fas fa-text-width"></i>
+                  Tabla de productos
+                </h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+
+
+
+<table class="table table-hover text-nowrap">
+    <thead>
+    <tr>
+        <th>Codigo</th>
+        <th>Nombre del producto</th>
+        <th>Precio</th>
+        <th>Stock</th>
+        <th>Iva</th>
+        <th>Peso</th>
+        <th>Zona</th>
+        <th>Marca</th>
+        <th>Proveedor</th>
+        <th>Presentacion</th>
+    </tr>
+    </thead>
+    <tbody>
+
+{% for producto in productos%}
+
+    <tr>
+        <td>{{producto.codigo}}</td>
+        <td>{{producto.descripcion_producto}}</td>
+        <td>{{producto.precio}}</td>
+        <td>{{producto.stock}}</td>
+        <td>{{producto.iva}}</td>
+        <td>{{producto.peso}}</td>
+        <td>{{producto.zonaname}}</td>
+        <td>{{producto.marcaname}}</td>
+        <td>{{producto.proveedorname}}</td>
+        <td>{{producto.presentacionname}}</td>
+    </tr>
+
+{% endfor %}
+
+    </tbody>
+</table>
+
+
+
+           </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- ./col -->
+          <div class="col-md-1">
+           
+           
+          </div>
+          <!-- ./col -->
+        </div>
+
+ {% endif %}
+
+
+
+{% endblock %}
